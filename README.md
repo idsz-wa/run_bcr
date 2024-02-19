@@ -20,20 +20,20 @@ chmod +x run_bcr_linux
 ##define file location
 Reads:
  - class: File
-   location: "/mnt/d/bcr_test/t1.r1.fq.gz" # fastq R1 location 
+   location: "t1.r1.fq.gz" # fastq R1 location 
 
  - class: File
-   location: "/mnt/d/bcr_test/t1.r2.fq.gz"  # fastq R2 location 
+   location: "t1.r2.fq.gz"  # fastq R2 location 
 
 ##define tools path
 mixcr_path:
   class: File
-  location: "/home/idsz/miniconda3/envs/py3/bin/mixcr" # mixcr location, Please ensure that you have obtained a license for MixCR.
+  location: "/path/to/mixcr" # mixcr location, Please ensure that you have obtained a license for MixCR.
 
 ##define  imgt_json path:
 mixcr_json:
   class: File
-  location: "/mnt/d/bcr_test/imgt.202312-3.sv8_rabbit.json" # imgt_json location 
+  location: "/path/to/imgt.202312-3.sv8_rabbit.json" # imgt_json location 
 version: 1
 threads: 16
 ```
