@@ -103,6 +103,11 @@ func main() {
 		log.Fatalf("获取用户 home 目录出错：%v", err)
 	}
 	// 构建 rabbit mixcr presets 的命令
+	err = createNestedFolder(filepath.Join(usr.HomeDir, ".mixcr/presets/"))
+	if err != nil {
+		fmt.Printf("Create Dir error: %s", err)
+	}
+
 	presetCmd := exec.Command(config.MixcrPath.Location,
 		"exportPreset", "--preset-name", "bd-sc-xcr-rhapsody-full-length", "-f",
 		"-s", "rabbit", filepath.Join(usr.HomeDir, ".mixcr/presets/bd_rabbit_bcr.yaml"))
@@ -118,6 +123,10 @@ func main() {
 	fmt.Printf("Output of build presets command:\n%s\n", output)
 	//准备json文件
 	err = createNestedFolder(filepath.Join(usr.HomeDir, ".mixcr/libraries/"))
+	if err != nil {
+		fmt.Printf("Create Dir error: %s", err)
+	}
+
 	err = copyFile(config.MixcrJson.Location, filepath.Join(usr.HomeDir, ".mixcr/libraries/imgt.202312-3.sv8_rabbit.json"))
 	if err != nil {
 		fmt.Printf("Copy json file error: %s", err)
